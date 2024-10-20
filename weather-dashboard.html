@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="weather-dashboard.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Import map for Google Generative AI -->
+    <script type="importmap">
+      {
+        "imports": {
+          "google-generative-ai": "https://esm.run/@google/generative-ai"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo">Weather App</div>
+      <ul class="sidebar-menu">
+        <li><a href="#dashboard">Dashboard</a></li>
+        <li><a href="#tables">Tables</a></li>
+      </ul>
+    </div>
+    <div class="main-content">
+      <div id="dashboard">
+        <div class="top-bar">
+          <div class="search-bar">
+            <input
+              type="text"
+              id="city-input"
+              placeholder="Search for a city..."
+            />
+            <button id="search-button">Search</button>
+          </div>
+          <div class="user-profile">
+            <img src="images.jpg" alt="User Avatar" class="user-avatar">
+        </div>
+        </div>
+        <div class="weather-widget">
+          <div class="weather-left">
+            <img
+              id="weather-icon"
+              class="weather-icon"
+              src=""
+              alt="Weather Icon"
+            />
+            <span id="temperature" class="temperature">--°C</span>
+            <div class="weather-details">
+              <p id="precipitation">Precipitation: --</p>
+              <p id="humidity">Humidity: --</p>
+              <p id="wind">Wind: --</p>
+            </div>
+          </div>
+          <div class="weather-right">
+            <h2 id="weather-title">Weather</h2>
+            <p id="time">--</p>
+            <p id="weather-description">--</p>
+          </div>
+        </div>
+        <div class="charts-container">
+          <div class="chart">
+            <canvas id="vertical-bar-chart"></canvas>
+          </div>
+          <div class="chart">
+            <canvas id="doughnut-chart"></canvas>
+          </div>
+          <div class="chart">
+            <canvas id="line-chart"></canvas>
+          </div>
+        </div>
+      </div>
+      <div id="tables" style="display: none">
+        <div class="table-container">
+          <h2>5-Day Weather Forecast</h2>
+          <table id="forecast-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Temperature</th>
+                <th>Weather</th>
+                <th>Icon</th>
+              </tr>
+            </thead>
+            <tbody id="forecast-body"></tbody>
+          </table>
+          <div class="pagination">
+            <button id="prev-page">Previous</button>
+            <span id="page-info">Page 1 of 1</span>
+            <button id="next-page">Next</button>
+          </div>
+        </div>
+        <!-- Chatbot icon -->
+        <img id="chatbot-icon" src="chatbot-marketing.gif" alt="Chatbot Icon" />
+
+        <!-- Chatbot Widget -->
+        <div class="chatbot-widget" id="chatbot-popup" style="display: none">
+          <div class="chatbot-header">Weather Chatbot</div>
+          <div class="chatbot-messages" id="chatbot-messages"></div>
+          <div class="chatbot-input">
+            <input
+              type="text"
+              id="chatbot-input"
+              placeholder="Ask about temperatures..."
+            />
+            <button id="chatbot-send">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        <!-- Google Generative AI API Integration -->
+        <script type="module">
+          // Initialize the Gemini API
+          const Gemini_API_KEY = "AIzaSyDAivSHtFSDymmJRTSbeaDq0clbMujPCYo";
+          import { GoogleGenerativeAI } from "google-generative-ai";
+          const genAI = new GoogleGenerativeAI(Gemini_API_KEY);
+    
+          const model = await genAI.getGenerativeModel({
+            model: "gemini-1.5-flash",
+          });
+    
+          console.log("Model:", model);
+    
+          // Capture user input
+          const chatbotInput = document.getElementById("chatbot-input");
+          const chatbotMessages = document.getElementById("chatbot-messages");
+          const sendButton = document.getElementById("chatbot-send");
+    
+          sendButton.addEventListener("click", async () => {
+            const message = chatbotInput.value;
+    
+            if (!message) {
+              console.log("Please enter a message.");
+              return;
+            }
+    
+            try {
+              const result = await model.generateContent(message);
+              const response = await result.response;
+              const botResponse = response.text();
+    
+              // Display response in chatbot widget
+              const botMessage = document.createElement("p");
+              botMessage.innerText = `Bot: ${botResponse}`;
+              chatbotMessages.appendChild(botMessage);
+    
+              // Clear input field
+              chatbotInput.value = "";
+            } catch (error) {
+              console.error("Error generating response:", error);
+            }
+          });
+        </script>
+    
+
+    <script src="weather-dashboard.js"></script>
+  </body>
+</html>

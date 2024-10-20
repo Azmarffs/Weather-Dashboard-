@@ -1,0 +1,518 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f0f5f9;
+    display: flex;
+    height: 100vh;
+    color: #333;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #1e3a5f;
+    color: #fff;
+    padding: 30px;
+    height: 100vh;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.sidebar:hover {
+    width: 280px;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #61dafb;
+}
+
+.sidebar-menu {
+    list-style-type: none;
+}
+
+.sidebar-menu li {
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.sidebar-menu a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.sidebar-menu a:hover {
+    color: #61dafb;
+    transform: translateX(5px);
+}
+
+.sidebar-menu a i {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.main-content {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+    background-color: #f0f5f9;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    background-color: #fff;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.search-bar {
+    flex: 1;
+    margin-right: 20px;
+    display: flex;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 25px 0 0 25px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.search-bar input:focus {
+    border-color: #61dafb;
+    outline: none;
+}
+
+.search-bar button {
+    padding: 12px 25px;
+    background-color: #1e3a5f;
+    color: #fff;
+    border: none;
+    border-radius: 0 25px 25px 0;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.search-bar button:hover {
+    background-color: #61dafb;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #f9f9f9;
+    border-radius: 25px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.user-profile:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+    border: 2px solid #61dafb;
+}
+
+.user-name {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.weather-widget {
+    background: linear-gradient(135deg, #6dd5ed, #2193b0);
+    color: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.weather-widget:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.weather-left {
+    display: flex;
+    align-items: center;
+}
+
+.weather-icon {
+    width: 80px;
+    height: 80px;
+    margin-right: 30px;
+    filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+.temperature {
+    font-size: 64px;
+    font-weight: bold;
+    margin-right: 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.weather-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.weather-details p {
+    margin: 5px 0;
+    font-size: 18px;
+}
+
+.weather-right {
+    text-align: right;
+}
+
+.weather-right h2 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 300;
+}
+
+.weather-right p {
+    margin: 5px 0;
+    font-size: 18px;
+}
+
+.charts-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.chart {
+    width: calc(33.33% - 20px);
+    height: 300px;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.chart:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.table-container {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+th {
+    background-color: #f0f5f9;
+    color: #1e3a5f;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+tr:hover {
+    background-color: #f9f9f9;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.pagination button {
+    padding: 10px 20px;
+    background-color: #1e3a5f;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    margin: 0 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.pagination button:hover {
+    background-color: #61dafb;
+    transform: translateY(-2px);
+}
+
+#chatbot-icon {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    z-index: 1000;
+    background-color: #1e3a5f;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+#chatbot-icon:hover {
+    transform: scale(1.1);
+    background-color: #61dafb;
+}
+
+.chatbot-widget {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 350px;
+    height: 500px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.chatbot-header {
+    background-color: #1e3a5f;
+    color: #fff;
+    padding: 15px 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.chatbot-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+}
+
+.chatbot-messages::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chatbot-messages::-webkit-scrollbar-thumb {
+    background-color: #61dafb;
+    border-radius: 4px;
+}
+
+.chatbot-messages::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.chatbot-input {
+    display: flex;
+    padding: 15px;
+    background-color: #fff;
+    border-top: 1px solid #e0e0e0;
+}
+
+.chatbot-input input {
+    flex: 1;
+    padding: 10px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 25px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.chatbot-input input:focus {
+    border-color: #61dafb;
+    outline: none;
+}
+
+.chatbot-input button {
+    padding: 10px 20px;
+    background-color: #1e3a5f;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.chatbot-input button:hover {
+    background-color: #61dafb;
+}
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        padding: 20px;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+
+    .chart {
+        width: 100%;
+    }
+
+    .weather-widget {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .weather-right {
+        text-align: left;
+        margin-top: 20px;
+    }
+
+    .chatbot-widget {
+        width: 90%;
+        right: 5%;
+        left: 5%;
+    }
+}
+
+.chatbot-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+    max-height: 350px; /* Ensures there's a maximum height, forcing scroll when content exceeds this */
+}
+
+.chatbot-messages::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chatbot-messages::-webkit-scrollbar-thumb {
+    background-color: #61dafb;
+    border-radius: 4px;
+}
+
+.chatbot-messages::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* For Firefox */
+.chatbot-messages {
+    scrollbar-width: thin;
+    scrollbar-color: #61dafb transparent;
+}
+
+.charts-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.chart {
+    width: calc(33.33% - 20px);
+    height: 300px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.chart:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.chart h3 {
+    font-size: 18px;
+    color: #1e3a5f;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Specific styling for each chart type */
+.chart canvas {
+    max-width: 100%;
+    height: auto !important;
+}
+
+/* Bar Chart */
+#vertical-bar-chart {
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+}
+
+/* Doughnut Chart */
+#doughnut-chart {
+    background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+}
+
+/* Line Chart */
+#line-chart {
+    background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+}
+
+@media (max-width: 1024px) {
+    .chart {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 768px) {
+    .chart {
+        width: 100%;
+    }
+}
+
