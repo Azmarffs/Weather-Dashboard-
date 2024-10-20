@@ -1,0 +1,20 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "weather-dashboard.html",
+        "use": "@vercel/static"
+      },
+      {
+        "src": "weather-dashboard.css",
+        "use": "@vercel/static"
+      },
+      {
+        "src": "weather-dashboard.js",
+        "use": "@vercel/static"
+      }
+    ],
+    "rewrites": [
+      { "source": "/", "destination": "/w" }
+    ]
+  }
