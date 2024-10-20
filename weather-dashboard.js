@@ -57,12 +57,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function fetchWeatherDataForWidget(city) {
     try {
-        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`);
+        const response = await fetch(`/api/weather?city=${city}`);
         const data = await response.json();
 
         if (response.ok) {
-            updateWeatherWidget(data);
-            updateWidgetBackground(data.weather[0].id);
+            updateWeatherWidget(data);  // Update widget with fetched data
+            updateWidgetBackground(data.weather[0].id);  // Update background based on weather condition
         } else if (response.status === 404) {
             // City not found, display user-friendly message
             alert(`City "${city}" not found. Please enter a valid city name.`);
@@ -76,6 +76,7 @@ async function fetchWeatherDataForWidget(city) {
         alert('An unexpected error occurred. Please check your connection and try again.');
     }
 }
+
 
 
 async function fetchWeatherDataForChatbot(city) {
