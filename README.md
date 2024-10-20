@@ -23,4 +23,4 @@ Before you can run this project locally, ensure that you have the following:
 To clone this project, open your terminal or command prompt and run the following command:
 
 ```bash
-git clone https://github.com/your-username/weather-chatbot-widget.git
+git clone https://github.com/Azmarffs/weather-chatbot-widget.git
