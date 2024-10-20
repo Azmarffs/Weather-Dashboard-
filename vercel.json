@@ -14,7 +14,7 @@
         "use": "@vercel/static"
       }
     ],
-    "rewrites": [
-      { "source": "/", "destination": "/w" }
+    "routes": [
+      { "src": "/", "dest": "/weather-dashboard.html" }
     ]
   }
