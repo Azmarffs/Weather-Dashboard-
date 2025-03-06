@@ -24,3 +24,4 @@ To clone this project, open your terminal or command prompt and run the followin
 
 ```bash
 git clone https://github.com/Azmarffs/weather-chatbot-widget.git
+Updated Weather Dashboard Documentation
